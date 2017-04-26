@@ -13,16 +13,19 @@ class Character:
     def __init__ (self, health, power):
         self.health = health
         self.power = power
+    def alive(character):
+        if character.health > 0:
+           return True
 
 class Hero(Character):
-   def __init__ (self, health, power):
-       self.health = health
-       self.power = power
+   # def __init__ (self, health, power):
+   #     self.health = health
+   #     self.power = power
 
-   def alive(hero):
-       if hero.health > 0:
-           return True
-#           self.health = hero.alive
+#    def alive(hero):
+#        if hero.health > 0:
+#            return True
+# #           self.health = hero.alive
 
    def attack(hero, goblin):
 #       goblin.health = 6
@@ -32,14 +35,14 @@ class Hero(Character):
            print("The goblin is dead.")
 
 class Goblin(Character):
-   def __init__ (self, health, power):
-       self.health = health
-       self.power = power
+   # def __init__ (self, health, power):
+   #     self.health = health
+   #     self.power = power
 
-   def alive(goblin):
-       if goblin.health > 0:
-           return True
-#           self.health = goblin.alive
+#    def alive(goblin):
+#        if goblin.health > 0:
+#            return True
+# #           self.health = goblin.alive
 
    def attack(goblin, hero):
        # Goblin attacks hero
@@ -57,10 +60,6 @@ def print_status_of_Goblin():
 hero = Hero(10, 5)
 goblin = Goblin(6, 2)
 
-# hero_health = hero.health
-# hero_power = hero.power
-# goblin_health = goblin.health
-# goblin_power = goblin.power
 
 def main():
     while goblin.alive() and hero.alive():
