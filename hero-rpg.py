@@ -9,13 +9,12 @@ In this simple RPG game, the hero fights the goblin. He has the options to:
 
 """
 
-# class Character:
-#     def __init__ (self, name, health, power):
-#         self.name = name
-#         self.health = health
-#         self.power = power
+class Character:
+    def __init__ (self, health, power):
+        self.health = health
+        self.power = power
 
-class Hero:
+class Hero(Character):
    def __init__ (self, health, power):
        self.health = health
        self.power = power
@@ -32,7 +31,7 @@ class Hero:
        if goblin.health <= 0:
            print("The goblin is dead.")
 
-class Goblin:
+class Goblin(Character):
    def __init__ (self, health, power):
        self.health = health
        self.power = power
@@ -48,11 +47,6 @@ class Goblin:
        print("The goblin does {} damage to you.".format(goblin.power))
        if hero.health <= 0:
            print("You are dead.")
-
-
-
-
-
 
 def print_status_of_Hero():
     print("You have {} health and {} power.".format(hero.health, hero.power))
