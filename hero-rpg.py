@@ -22,10 +22,10 @@ class Character:
 
     def attack(self, attackee):
        # Goblin attacks hero
-       self.health -= attackee.power
-       print("The {} does {} damage to {}.".format(attackee.name, attackee.power, self.name))
-       if self.health <= 0:
-           print("{} is dead.".format(self.name))
+       attackee.health -= self.power
+       print("The {} does {} damage to {}.".format(self.name, self.power, attackee.name))
+       if attackee.health <= 0:
+           print("{} is dead.".format(attackee.name))
 
 class Hero(Character):
     def __init__ (self, name, health, power):
