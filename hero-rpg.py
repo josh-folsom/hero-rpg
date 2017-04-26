@@ -50,6 +50,16 @@ class Goblin:
            print("You are dead.")
 
 
+
+
+
+
+def print_status_of_Hero():
+    print("You have {} health and {} power.".format(hero.health, hero.power))
+
+def print_status_of_Goblin():
+    print("The goblin has {} health and {} power.".format(goblin.health, goblin.power))
+
 hero = Hero(10, 5)
 goblin = Goblin(6, 2)
 
@@ -60,8 +70,10 @@ goblin = Goblin(6, 2)
 
 def main():
     while goblin.alive() and hero.alive():
-        print("You have {} health and {} power.".format(hero.health, hero.power))
-        print("The goblin has {} health and {} power.".format(goblin.health, goblin.power))
+        print_status_of_Hero()
+        # print("You have {} health and {} power.".format(hero.health, hero.power))
+        print_status_of_Goblin()
+        # print("The goblin has {} health and {} power.".format(goblin.health, goblin.power))
         print()
         print("What do you want to do?")
         print("1. fight goblin")
