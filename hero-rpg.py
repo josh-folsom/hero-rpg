@@ -18,21 +18,36 @@ class Character:
         if character.health > 0:
            return True
     def print_status_of_Char(self):
-        print("The {} has {} health and {} power.".format(self.name, self.health, self.power))
+        print("{} has {} health and {} power.".format(self.name, self.health, self.power))
 
     def attack(self, attackee):
        # Goblin attacks hero
        attackee.health -= self.power
-       print("The {} does {} damage to {}.".format(self.name, self.power, attackee.name))
-       if attackee.health <= 0:
+       print("{} does {} damage to {}.".format(self.name, self.power, attackee.name))
+       if attackee.health < 1 and attackee.name != "Zombie":
            print("{} is dead.".format(attackee.name))
+       else:
+           print("{} is UNDEAD, your attacks have no effect".format(attackee.name))
 
 class Hero(Character):
-    def __init__ (self, name, health, power):
-        self.name = name
-        self.health = health
-        self.power = power
+    pass
 
+class Zombie(Character):
+    pass
+
+    def alive(zombie):
+        zombie.health = 0
+        return True
+
+    def print_status_of_Char(self):
+        print("{} is not going to get any deader, you better flee!".format(self.name, self.health))
+
+    # def attack(self, attackee):
+    #    # Goblin attacks hero
+    #    attackee.health -= self.power
+    #    print("{} does {} damage to {}.".format(self.name, self.power, attackee.name))
+    #    if attackee.health <= 0:
+    #        print("{} is dead.".format(attackee.name))
 #    def alive(hero):
 #        if hero.health > 0:
 #            return True
@@ -45,47 +60,31 @@ class Hero(Character):
  #            print("The goblin is dead.")
 
 class Goblin(Character):
-    def __init__ (self, name, health, power):
-        self.name = name
-        self.health = health
-        self.power = power
-#    def alive(goblin):
-#        if goblin.health > 0:
-#            return True
-# #           self.health = goblin.alive
-
-    # def attack(goblin, hero):
-    #    # Goblin attacks hero
-    #    hero.health -= goblin.power
-    #    print("The goblin does {} damage to you.".format(goblin.power))
-    #    if hero.health <= 0:
-    #        print("You are dead.")
-
-# def print_status_of_Hero():
-#     print("You have {} health and {} power.".format(hero.health, hero.power))
-#
-# def print_status_of_Goblin():
-#     print("The goblin has {} health and {} power.".format(goblin.health, goblin.power))
+    pass
 
 hero = Hero('Hero', 10, 5)
 goblin = Goblin('Goblin', 6, 2)
+zombie = Zombie('Zombie', 6, 2)
 
 
 def main():
-    while goblin.alive() and hero.alive():
+#    while goblin.alive() and hero.alive():
+    while zombie.alive() and hero.alive():
         hero.print_status_of_Char()
-        # print("You have {} health and {} power.".format(hero.health, hero.power))
-        goblin.print_status_of_Char()
+#         print("You have {} health and {} power.".format(hero.health, hero.power))
+#        goblin.print_status_of_Char()
+        zombie.print_status_of_Char()
         # print("The goblin has {} health and {} power.".format(goblin.health, goblin.power))
         print()
         print("What do you want to do?")
-        print("1. fight goblin")
+        print("1. fight enemy")
         print("2. do nothing")
         print("3. flee")
         print("> ", end=' ')
         inpt = input()
         if inpt == "1":
-            hero.attack(goblin)
+            hero.attack(zombie)
+#            hero.attack(goblin)
             # Hero attacks goblin
             # goblin_health -= hero_power
             # print("You do {} damage to the goblin.".format(hero_power))
@@ -99,13 +98,10 @@ def main():
         else:
             print("Invalid inpt {}".format(inpt))
 
-        if goblin.health > 0:
-            goblin.attack(hero)
-            # # Goblin attacks hero
-            # hero.health -= goblin.power
-            # print("The goblin does {} damage to you.".format(goblin.power))
-            # if hero.health <= 0:
-            #     print("You are dead.")
+        if zombie.health < 1:
+            zombie.attack(hero)
+#        if goblin.health > 0:
+#            goblin.attack(hero)
 
 if __name__ == "__main__":
   main()
